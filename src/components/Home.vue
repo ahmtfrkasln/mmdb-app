@@ -45,7 +45,7 @@ export default {
         .get(this.discoverTvPath + this.apiKey)
         .then(res => res.data)
         .then(discover => {
-          this.discoverTv = discover.results.splice(0, 3)
+          this.discoverTv = discover.results.splice(1, 3)
         });
 
       axios

@@ -1,17 +1,29 @@
 <template>
   <div class="bg-dark">
     <div id="nav-spacer" class="bg-dark"></div>
-    <nav class="row p-2 border-top border-secondary">
-        <button class="btn px-3 my-auto hide-md">
-            <h3><i class="fas fa-bars text-white"></i></h3>
-        </button>
-      <a class="navbar-brand my-auto" href="#">
+    <nav id="menuButton" class="row p-2 border-top border-secondary">
+        <div class="dropdown">
+            <button class="btn px-3 my-auto hide-md" data-toggle="dropdown">
+                <h3><i class="fas fa-bars text-white"></i></h3>
+            </button>
+            <div class="dropdown-menu bg-dark">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action bg-dark" href="#">Movies, TV<br>& Showtimes</a>
+                    <a class="list-group-item list-group-item-action bg-dark" href="#">Celebs, Events<br>& Photos</a>
+                    <a class="list-group-item list-group-item-action bg-dark" href="#">News &<br>Community</a>
+                    <a class="list-group-item list-group-item-action bg-dark text-warning" href="#">Watchlist</a>
+                </div>
+            </div>
+        </div>
+
+
+      <a class="navbar-brand my-auto" href="/">
         <img src="@/assets/mmdb-logo.png" height="50" alt />
       </a>
 
       <div id="nav-main" class="col my-auto">
           <div class="row">
-              <input class="col rounded-left" type="text" placeholder="Find Movies, TV shows, Celebrities...">
+              <NavSearch />
               <select class="hide-sm col-2 ml-1" name="" id=""></select>
               <div class="bg-warning rounded-right py-1 px-2 ml-1">
                 <i class="fas fa-search"></i>
@@ -33,7 +45,7 @@
                   </ul>
               </div>
           </div>
-          <div class="hide-sm row w-75">
+          <div class="hide-sm w-75">
             <ul class="navbar-nav bd-navbar-nav flex-row w-100">
               <li class="nav-item-spacer"></li>
               <li class="nav-item mx-auto menu">
@@ -59,6 +71,20 @@
     </nav>
   </div>
 </template>
+
+<script>
+    import JQuery from 'jquery';
+    let $ = JQuery;
+    import NavSearch from "./NavSearch";
+    export default {
+        methods:{
+            showDropdown(){
+                $('#menuButton').dropdown('toggle');
+            }
+        },
+        components:{NavSearch}
+    }
+</script>
 
 <style scoped>
       nav{
@@ -88,7 +114,7 @@
           text-shadow: 0 0 5px white;
       }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1023px) {
       .hide-sm{
         display: none;
       }

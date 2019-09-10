@@ -3,16 +3,18 @@
         <div class="container shadow-root">
             <Navbar/>
             <router-view></router-view>
+            <Footer />
         </div>
     </div>
 </template>
 
 <script>
     import Navbar from './components/Navbar'
+    import Footer from './components/Footer'
 
     export default {
         name: 'app',
-        components: {Navbar}
+        components: {Navbar, Footer}
     }
 </script>
 
